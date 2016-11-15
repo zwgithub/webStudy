@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>多维数组</title>
+    <script src="vue.js"></script>
+  </head>
+
+  <body>
+
+  <div id="app">
+    <ul id="example-2">
+    index 没起到作用
+    <li v-for="item in items">
+      {{ parentMessage }} - {{ $index }} - {{ item.message }}
+    </li>
+  </ul>
+  <script>
+  var example2 = new Vue({
+    el: '#example-2',
+    data: {
+      parentMessage: '多维数组',
+      items: [
+        { message: '1' },
+        { message: '2' }
+      ]
+    }
+  })
+  </script>
+  </body>
+</html>
