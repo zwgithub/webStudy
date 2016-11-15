@@ -5,12 +5,15 @@
 		<title>filter</title>
 		<script src="vue.js"></script>
 	</head>
+
 	<body>
 		<div id="app">
 		    <p>{{message}}</p>
+		    //大写没有起作用
 			<p>{{message | uppercase}}</p>
-			<!-- <p>{{message | reverse | uppercase}}</p> -->
+			<p>{{message | reverse | uppercase}}</p>
 		</div>
+		
 		<script>
 		Vue.filter('reverse', function (value) {
 		    return value.split('').reverse().join('')
