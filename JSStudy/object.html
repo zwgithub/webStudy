@@ -7,17 +7,42 @@
 
 	<body>
 		<script>
-			alert("1");
+			//创建对象的几种方法
+			
+			//字面量方法
 			var person = {
 				"name" : "shanwu",
 				age : 26,
 				"favorite" : "chinese chess"
 			};
-			alert(person);
+			// alert(person);
 
-			
+			//工厂方法    不推荐
+			var eat=function(){
+				return "eat";
+			};
+			function persion1(){
+				var human = new Object();
+				human.history = "abc";
+				human.age = 12345;
+				human.eat = eat;
+				return human;
+			};
 
-			
+			var x1 = persion1();
+			// alert(x1.history);
+
+			//构造函数方式
+			function person2 () {
+				this.history = "abc";
+				this.age = 12345;
+				this.eat = eat;
+			};
+
+			var x2 = new person2();
+			alert(x2.history);
+
+
 		</script>
 	</body>
 </html>
