@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>string学习</title>
+	</head>
+
+	<body>
+		<script>
+			var s = "hello world";
+			//取字符
+			var a = s.charAt(0);	//h
+			
+			//从第几个开始，取几个
+			a = s.substring(0,5);	//hello
+
+			//从第几个开始，取几个 和 substring 类似
+			a = s.slice(1,4);	//hello
+
+			//取最后 5 个
+			a = s.slice(-5)		//world
+
+			//字符第一个出现的位置
+			a = s.indexOf('h');	//0
+
+			//分割字符串
+			a = s.split(' ');		//hello,world
+
+			//替换字符
+			a = s.replace("h","H");	//
+
+			//转换为大写
+			a = s.toUpperCase();
+
+			alert(a);
+		</script>
+	</body>
+</html>
