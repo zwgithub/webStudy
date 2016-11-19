@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>理解原型引用prototype</title>
+	</head>
+
+	<body>
+		<script>
+			function BaseClass(argument) {
+				this.showMsg = function () {
+					alert("BaseClass showMsg");
+				};
+				this.baseShowMsg = function () {
+					alert("baseShowMsg baseShowMsg");
+				};
+			}
+			BaseClass.showMsg = function () {
+				alert("BaseClass showMsg static");
+			};
+
+			function ExtendClass(argument) {
+				this.showMsg = function () {
+					alert("ExtendClass showMsg");
+				};
+			};
+			ExtendClass.showMsg = function () {
+				alert("ExtendClass showMsg static");
+			}
+
+
+			ExtendClass.prototype = new BaseClass();
+			var instance = new ExtendClass();
+
+			// ExtendClass 与 BaseClass 方法名字相同时会先调用 ExtendClass 里的方法
+			// instance.showMsg();
+
+			// var baseInstance = new BaseClass();
+			// instance.showMsg.call(instance);
+			instance.baseShowMsg();
+
+
+		</script>
+	</body>
+</html>
