@@ -17,10 +17,13 @@
 			};
 			// alert(person);
 
-			//工厂方法    不推荐
+
 			var eat=function(){
 				return "eat";
 			};
+
+
+			//工厂方法    不推荐
 			function persion1(){
 				var human = new Object();
 				human.history = "abc";
@@ -28,20 +31,52 @@
 				human.eat = eat;
 				return human;
 			};
-
 			var x1 = persion1();
 			// alert(x1.history);
 
-			//构造函数方式
+			//构造函数方式		不推荐
 			function person2 () {
 				this.history = "abc";
 				this.age = 12345;
 				this.eat = eat;
 			};
-
 			var x2 = new person2();
-			alert(x2.history);
+			// alert(x2.history);
 
+			//原型模式 	不推荐
+			function person3 () {
+
+			};
+			person3.prototype.history = "abc";
+			person3.prototype.age = 12345;
+			person3.prototype.eat = eat;
+			var x3 = new person3();
+			// alert(x3.history);
+
+			//混合构造函数		推荐
+			function person4 () {
+				this.history = "abc";
+				this.age = 12345;
+			};
+			person4.prototype.eat = function () {
+				return this.name;
+			};;
+			var x4 = new person4();
+			// alert(x4.history);
+
+			//动态原型方式
+			function person5 () {
+				this.history = "abc";
+				this.age = 12345;
+				if (typeof person5._eat == "undifiend") {
+					person5.prototype.eat = function () {
+						return this.name;
+					}
+				}
+				person5._eat = true;
+			};
+			var x5 = new person5 ();
+			alert(x5.history);
 
 		</script>
 	</body>

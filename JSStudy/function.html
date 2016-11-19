@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>js中的方法</title>
+	</head>
+
+	<body>
+		<script>
+			// js 中的方法分为三类：对象方法，类方法，原型方法
+			function People (name) {
+				this.name = name;
+				//对象方法
+				this.Introduce = function () {
+					alert("My name is " + this.name);
+				};
+			};
+
+			//类方法
+			People.eat = function () {
+				alert("I can eat");
+			};
+
+			//原型方法
+			People.prototype.IntroduceChinese = function () {
+				alert("我的名字是"  + this.name);
+			};
+
+			var p1 = new People ("shanwu");
+			p1.Introduce();
+			People.eat();
+			p1.IntroduceChinese();
+
+		</script>
+	</body>
+</html>
