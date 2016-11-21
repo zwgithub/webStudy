@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<title>dom 操作学习</title>
+	</head>
+
+	<body>
+		<p id="hello"> hello world!</p>
+		<h5>下面 js 通过标签来获得</h5>
+		<h1 onclick="this.innerHTML = 'thank you' ">请点击文本</h1>
+		<button type="button" onclick="document.getElementById('hello').style.color='red' "> 点击这里修改 CSS </button>
+
+		<div id = "div1">
+			<p id = "p1"> 这是一个标签</p>
+			<p id = "p2"> 这是另一个标签 </p>
+		</div>
+
+
+		<script type="text/javascript">
+			//通过 id 找到相应的 html 元素
+			x = document.getElementById('hello');
+			document.write('<p id="hello"> 文本是（这是通过 id 获取的）：' + x.innerHTML + '</p>');
+
+			y = document.getElementsByTagName('h5');
+			document.write('<p> 文本是（这是通过标签获取的）:' + y[0].innerHTML + '</p>');
+
+			//添加一个标签,先创建标签，在创建标签的文本并追加到标签里，然后向一个已有的的标签里添加新创建的标签
+			var para = document.createElement("p");
+			var node = document.createTextNode("这是一个刚添加的新标签");
+			para.appendChild(node);
+			var element = document.getElementById('div1');
+			element.appendChild(para);
+
+			//删除 HTML 元素，那么必须要清楚该改元素的父元素
+			var parnet = document.getElementById('div1');
+			var child = document.getElementById('p1');
+			parnet.removeChild(child);
+
+		</script>
+	</body>
+</html>
