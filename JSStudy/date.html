@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>string学习</title>
+
+		<script>
+			//获得当日的时间
+			document.write(Date() + '</br>');
+
+			//设置具体的时间
+			var d = new Date();
+			d.setFullYear(2000,00,01)
+			document.write(d + '</br>');
+
+			//将日期转换为字符串
+			document.write(d.toUTCString() + '</br>');
+
+			var weekday = new Array(7)
+			weekday[0] = "星期日"
+			weekday[1] = "星期一"
+			weekday[2] = "星期二"
+			weekday[3] = "星期三"
+			weekday[4] = "星期四"
+			weekday[5] = "星期五"
+			weekday[6] = "星期六"
+			document.write("今天是：" + weekday[d.getDay()] + '</br>');
+
+			//数字时钟
+			function startTime() {
+				var today = new Date()
+				var h = today.getHours()
+				var m = today.getMinutes()
+				var s = today.getSeconds()
+				// add a zero in front of numbers<10
+				m = checkTime(m)
+				s = checkTime(s)
+				document.getElementById('txt').innerHTML = h + ":" + m + ":" + s
+				t = setTimeout('startTime()',500)
+			}
+
+			function checkTime(i) {
+				if (i < 10)  {
+					i = "0" + i
+				}
+				return i
+			}
+			
+		</script>
+
+	</head>
+
+	<body onload="startTime()">
+		
+		<div id="txt">fsddfasdfs</div>
+	</body>
+</html>
