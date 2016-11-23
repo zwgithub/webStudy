@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jsCookies</title>
+
+		<script type="text/javascript">
+
+			function delCookie(c_name,value) {
+				console.log(c_name + "   " + value);
+				var date = new Date();
+				date.setDate(date.getDate() - 1000);
+				console.log(c_name + "=" + escape(value) + ";expires=" + date.toGMTString());
+				document.cookie = c_name + "=" + escape(value) + ";expires=" + date.toGMTString();
+				console.log("删除后 cookie 为：" + document.cookie);
+			}
+
+			function getCookie(c_name) {
+				if (document.cookie.length>0) { 
+					c_start=document.cookie.indexOf(c_name + "=")
+					if (c_start!=-1) { 
+						c_start=c_start + c_name.length+1 
+						c_end=document.cookie.indexOf(";",c_start)
+						if (c_end==-1) c_end=document.cookie.length
+						return unescape(document.cookie.substring(c_start,c_end))
+					} 
+				}
+				return ""
+			}
+
+			function setCookie(c_name,value,expiredays) {
+				console.log(c_name + value + expiredays);
+				var exdate = new Date();
+				exdate.setDate(exdate.getDate() + expiredays);
+				console.log(c_name + "=" + escape(value)+((expiredays==null) ? "" : "; expires="+exdate.toGMTString()));
+				document.cookie = c_name + "=" + escape(value)+((expiredays==null) ? "" : ";expires="+exdate.toGMTString());
+				console.log("cookie为：" + document.cookie);
+			}
+
+			function checkCookie(argument) {
+				userName = getCookie('userName');
+				if (userName != null && userName != "") {
+					alert(" 欢迎" + userName + "再次登陆");
+				} else {
+					userName = prompt("请输入你的名字:","张三");
+					if (userName != null && userName != "") {
+						setCookie('userName',userName,365)
+					}
+				}
+			}
+
+			function buttonAction() {
+				delCookie('userName',getCookie('userName'));
+			}
+		</script>
+	</head>
+
+	<body onload="checkCookie()">
+		<button type="button" onclick="buttonAction()">点击清除 cookie</button>
+	</body>
+</html>
