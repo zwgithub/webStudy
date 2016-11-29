@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>函数自调用</title>
+		<script>
+			var a = [];
+			for (var i = 0; i < 10; i++) {
+			  a[i] = function () {
+			    console.log(i);
+			  };
+			}
+			a[1](); // 10
+
+			var b = [];
+			for (let i = 0; i < 10; i++) {
+			  b[i] = function () {
+			    console.log(i);
+			  };
+			}
+			b[2](); // 6
+
+			// //函数声明提升
+			// fnName();
+			// function fnName(){
+   //  				alert("aaa");
+			// }
+
+			// function fnName () {
+			// 	alert("函数声明");
+			// };
+			// fnName()
+
+			// var fn1Name = function(){
+   //  				alert('函数表达式');
+			// }
+			// fn1Name()
+
+			// var fn2Name = function () {
+			// 	alert('函数表达式加括号后直接调用');
+			// }()
+
+			( function(){
+				alert("hello");
+			})();
+
+			// (function(){
+			// 	alert("world");
+			// }());
+
+			-function(a){
+   				 console.log(a);   //firebug输出1234567,使用-运算符
+			}(1234567);
+
+		 </script>
+	</head>
+
+	<body>
+	</body>
+</html>
